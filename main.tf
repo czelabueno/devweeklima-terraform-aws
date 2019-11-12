@@ -6,9 +6,11 @@ provider "aws" {
 
 module "s3_bucket" {
   source = "./s3-webstatic"
+  count = "${var.count}"
 }
 
 module "lambda_function" {
   source = "./lambda-function"
+  count = "${var.count}"
   app_version = "${var.app_version}"
 }
