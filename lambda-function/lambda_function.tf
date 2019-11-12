@@ -1,7 +1,7 @@
 variable "app_version" {}
 
+
 resource "aws_lambda_function" "lambda" {
-  count = "${var.count}"
   function_name = "ServerlessDevweeklima"
   s3_bucket = "devlimabucketexample"
   s3_key = "v${var.app_version}/devweeklima-webapp-aws.zip"
@@ -12,7 +12,6 @@ resource "aws_lambda_function" "lambda" {
 }
 
 resource "aws_iam_role" "lambda_exec" {
-   count = "${var.count}"
    name = "serverless_lambda_permissons" 
 assume_role_policy = <<EOF
 {
